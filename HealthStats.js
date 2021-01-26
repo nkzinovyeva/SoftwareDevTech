@@ -17,7 +17,11 @@ const stats = [
 console.log(JSON.stringify(stats));
 
 
-//***** exercises *****/
+/***** 
+ * exercises 
+*****/
+
+/* Task 2: Then do whatever reports / analysis or so, with all the measurements you hard-coded above */
 
 // userInfo = {} ///  Uncaught TypeError: Assignment to constant variable
 
@@ -52,7 +56,7 @@ console.log('Im the original Object with the following data: ' + Object.values(u
 /****---Complete list of JavaScript falsy values ----****/
 
 if (false) {console.log("I can print " + Object.values(userInfo) )} //The keyword false.
-else if (null) {console.log( "I can print " +Object.values(userInfo))}  // null	null — the absence of any value.
+else if (null) {console.log( "I can print " + Object.values(userInfo))}  // null	null — the absence of any value.
 else if (undefined) {console.log( "I can print " +Object.values(userInfo))} // undefined — the primitive value.
 else if (0) {console.log("I can print " + Object.values(userInfo))} // The Number zero and negative zero (so, also 0, -0, 0.0/-0.0, etc., 0x0/-0x0).
 else if (0n) {console.log("I can print " + Object.values(userInfo))} // 0n, -0n	The BigInt zero and negative zero (so, also 0x0n/-0x0n).
@@ -66,6 +70,20 @@ else {console.log("nothing happened")}
 
 
 
+
+// Task 3: Turn the data into JSON and back and make sure it still is valid and same information
+// Take a copy of than JSON as text. We usually need such JSON text (both format of the JSON and
+// some data are needed) for tests anyway!
+
+const statsJson = JSON.stringify(stats);
+console.log("JSON is "+ statsJson);
+
+const statsObj = JSON.parse(statsJson);
+const iterator = statsObj.values();
+
+for (const value of iterator) {
+  console.log("Data is " + Object.values(value));
+}
 
 
 
