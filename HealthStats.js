@@ -69,6 +69,50 @@ else {console.log("nothing happened")}
 // That slot only exists in document.all and cannot be set using JavaScript.
 
 
+var workout = function(data){
+        "use strict";
+        let counter = 0;
+        for (let i = 0; i < data.length; i++) {
+            if(data !== null && data[i].kCal > 0) {
+                counter++;
+            }
+        }
+        console.log("There were " + counter + " workouts");
+}
+workout(stats);
+
+// function that defines a function and returns that function (object)
+var motivator = function (d) {
+        "use strict";
+        if(d===true) {
+            return function(text) {
+                console.log("It was a good " + text);
+            };
+        } else {
+            return function(text) {
+                console.log("It was a bad " + text);
+            };
+        }
+    };
+    
+// calling both functions on one row:
+//motivator(true)(" day, " + userInfo.name);
+
+var chechWorkout = function (_, stats) {
+        "use strict";
+        for(let i = 0; i < stats.length; i++) {
+                if(stats[i].kCal) {
+                        motivator(true)("day, " + userInfo.name);
+                }
+                else {
+                        motivator(false)("day, " + userInfo.name);
+
+                }
+        }
+        
+};
+
+chechWorkout(stats, stats);
 
 
 // Task 3: Turn the data into JSON and back and make sure it still is valid and same information
@@ -79,12 +123,12 @@ const statsJson = JSON.stringify(stats);
 console.log("JSON is "+ statsJson);
 
 const statsObj = JSON.parse(statsJson);
+console.log(statsObj);
 const iterator = statsObj.values();
 
 for (const value of iterator) {
-  console.log("Data is " + Object.values(value));
+  console.log(Object.values(value));
 }
-
 
 
 
