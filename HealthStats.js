@@ -115,6 +115,10 @@ var chechWorkout = function (_, stats) {
 chechWorkout(stats, stats);
 
 
+const {date, weight, waist, kCal, slept,} = stats[0];
+console.log ("date is " + date + " and weight is " + weight  + " and waist is " + waist + " and kCal is " + kCal + " and does he slept? " + slept)
+
+
 // Task 3: Turn the data into JSON and back and make sure it still is valid and same information
 // Take a copy of than JSON as text. We usually need such JSON text (both format of the JSON and
 // some data are needed) for tests anyway!
