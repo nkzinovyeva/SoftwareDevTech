@@ -138,6 +138,11 @@ checkkCal();
 checkkCal(100);
 checkkCal(2000);
 
+console.log("*****")
+
+const {name, dateGoal, ...rest} = userInfo
+console.log(name, dateGoal.toDateString())
+console.log(rest) 
 
 
 
