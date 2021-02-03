@@ -96,9 +96,9 @@ var motivator = function (d) {
     };
     
 // calling both functions on one row:
-//motivator(true)(" day, " + userInfo.name);
+motivator(true)(" day, " + userInfo.name);
 
-var chechWorkout = function (_, stats) {
+var checkWorkout = function (_, stats) {
         "use strict";
         for(let i = 0; i < stats.length; i++) {
                 if(stats[i].kCal) {
@@ -106,17 +106,40 @@ var chechWorkout = function (_, stats) {
                 }
                 else {
                         motivator(false)("day, " + userInfo.name);
-
                 }
-        }
-        
+        }   
 };
 
-chechWorkout(stats, stats);
+checkWorkout(stats, stats);
 
 
 const {date, weight, waist, kCal, slept,} = stats[0];
 console.log ("date is " + date + " and weight is " + weight  + " and waist is " + waist + " and kCal is " + kCal + " and does he slept? " + slept)
+let array = [weight, waist, kCal]     
+let array2 = [...array, ...array,];
+let array3 = ["test", ...array,];
+let array4 = [...array, "test",];   
+console.log(array); 
+console.log(array2); 
+console.log(array3);
+console.log(array4);
+
+console.log('You forgot to sleep at ' + JSON.stringify(stats.filter(day => day.slept === false)));
+
+var checkkCal = function(calories = 0) {
+    stats.forEach(day => {                              
+        if(day.kCal > calories) {
+            console.log(day.date.toDateString() + ': You burned ' + (day.kCal + calories))
+        }
+    })
+}
+
+checkkCal();
+checkkCal(100);
+checkkCal(2000);
+
+
+
 
 
 // Task 3: Turn the data into JSON and back and make sure it still is valid and same information
