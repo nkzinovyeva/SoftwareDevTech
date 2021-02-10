@@ -144,13 +144,19 @@ const {name, dateGoal, ...rest} = userInfo
 console.log(name, dateGoal.toDateString())
 console.log(rest) 
 
+console.log(userInfo.name)         
+const fieldName = 'height' 
+console.log(userInfo[fieldName])
+userInfo.address = 'Helsinki'
+userInfo['secret number'] = 12341
+console.log(JSON.stringify(userInfo)) 
 
 
 
 // Task 3: Turn the data into JSON and back and make sure it still is valid and same information
 // Take a copy of than JSON as text. We usually need such JSON text (both format of the JSON and
 // some data are needed) for tests anyway!
-
+console.log("***Task 3***")
 const statsJson = JSON.stringify(stats);
 console.log("JSON is "+ statsJson);
 
@@ -227,3 +233,79 @@ for (const value of iterator) {
 
 // Task 4: If want to, start thinking how to generate data. JavaScript is not the best suited
 // for that task, compared to e.g. Python. But if want, you can do with JavaScript as well. 
+
+
+var foo3 = function (d) {
+    "use strict";
+    if(d===true) {
+        return function(text) {
+            console.log("Truthful text: " + text);
+        };
+    } else {
+        return function(text) {
+            console.log("Alternative truth text: " + text);
+        };
+    }
+};
+
+// calling both functions on one row:
+foo3(true)("It's morning.");
+
+// ... or with two lines
+var foo3b = foo3(true);
+foo3b("It's morning, rignt?.");
+
+// extra example
+foo3b = foo3(false);
+foo3b("I hate mornings.");
+
+console.log(typeof(foo3));
+
+console.log("***dir***");
+console.dir(foo3b);
+console.dir(foo3b.prototype);
+console.log("***   ***");
+
+
+var foo4 = function (a, b) {
+    "use strict";
+
+    var c;
+    b = Number(b);
+
+    if(Number.isNaN(b)) {
+        c = a;
+    } else {
+        c = a + b;
+    }
+    return c;
+};
+
+console.log("foo4(3,4): " +foo4(3, 4));
+console.log("foo4(3): " +foo4(3));
+console.log("foo4(): " +foo4()); // Now even a without value = undefined, fingers crossed
+
+// Calling function without _all_ of it's parameters
+// Let's say b is always needed and a sometimes not
+var foo5 = function (a, b) {
+    "use strict";
+    var c;
+    a = Number(a);
+
+    if(Number.isNaN(a)) {
+        c = b;
+    } else {
+        c = a + b;  
+    }
+    return c;
+};
+
+console.log("foo5(3,4): " + foo5(3, 4));
+console.log("foo5(null,4): " + foo5(null, 4));   
+// null or any other yielding NaN from Number(a) would do here.
+
+var returnedValue2 = (abc => 42)(); // Definition & call, return value to a variable
+console.log("Meaning of life " + returnedValue2);
+(() => 42)();
+(abc => 42)();
+console.log((() => 42)())
